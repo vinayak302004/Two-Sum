@@ -1,0 +1,52 @@
+# Java 
+
+1. Brute-Force Approach :
+
+class Solution 
+{
+    public int[] twoSum(int[] nums, int target) 
+    {
+        int n=nums.length,i,j;
+        int[] arr=new int[2];
+        for(i=0;i<n;i++)
+        {
+            for(j=i+1;j<n;j++)
+            {
+                if(nums[i]+nums[j]==target)
+                {
+                    arr[0]=i;
+                    arr[1]=j;
+                    break;
+                }
+            }
+        }
+        return arr;
+    }
+}
+
+2. Optimal Approach : (Hashmap)
+
+class Solution 
+{
+    public int[] twoSum(int[] nums, int target) 
+    {
+        int[] arr=new int[2];
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int i,n=nums.length,num,diff;
+        for(i=0;i<n;i++)
+        {
+            num=nums[i];
+            diff=target-num;
+            if(map.containsKey(diff))
+            {
+                arr[0]=map.get(diff);
+                arr[1]=i;
+            }
+            else
+            {
+                map.put(nums[i],i);
+            }
+        }
+        return arr;
+    }
+}
